@@ -1,17 +1,21 @@
 import express, { Express, Request, Response } from 'express';
 import dotenv from 'dotenv';
+const routes = require("./core/routes");
 
 dotenv.config();
 
 const app: Express = express();
 const port = process.env.PORT;
 
-app.set("port", process.env.PORT || 3000);
+app.set("port", port || 3000);
+// app.use(express.urlencoded({ extended: true, strict: false }));
 app.use(express.json());
 
-app.get('/', (req: Request, res: Response) => {
-  res.send({message:'Express + TypeScript Server'});
-});
+app.use("/v1", routes);
+
+// app.get('/', (req: Request, res: Response) => {
+//   res.send({message:'Express + TypeScript Server'});
+// });
 
 // app.listen(port, () => {
 //   console.log(`⚡️[server]: Server is running at https://localhost:${port}`);
