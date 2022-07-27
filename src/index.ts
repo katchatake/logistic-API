@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 const routes = require("./core/routes");
 
 dotenv.config();
-
+// console.log(process.env.localhost)
 const app: Express = express();
 const port = process.env.PORT;
 
